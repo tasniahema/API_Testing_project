@@ -1,0 +1,1 @@
+newman run DummyJSONproducts.postman_collection.json -e DummyJSONProducts.postman_environment.json -r cli,htmlextra
