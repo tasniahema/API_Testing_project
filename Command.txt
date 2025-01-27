@@ -1,0 +1,92 @@
+Microsoft Windows [Version 10.0.19045.5371]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\DELL>node -v
+v20.11.0
+
+C:\Users\DELL>npm install -g newman
+npm WARN deprecated har-validator@5.1.5: this library is no longer supported
+npm WARN deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm WARN deprecated @faker-js/faker@5.5.3: Please update to a newer version.
+
+changed 120 packages in 31s
+
+10 packages are looking for funding
+  run `npm fund` for details
+
+C:\Users\DELL>newman -v
+6.2.1
+
+C:\Users\DELL>npm install -g newman-reporter-htmlextra
+npm WARN deprecated har-validator@5.1.5: this library is no longer supported
+npm WARN deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm WARN deprecated @faker-js/faker@5.5.3: Please update to a newer version.
+
+changed 166 packages in 26s
+
+14 packages are looking for funding
+  run `npm fund` for details
+
+C:\Users\DELL>newman run DummyJSONproducts.postman_collection.json -e DummyJSONProducts.postman_environment.json -r cli,htmlextra
+error: could not load environment
+  ENOENT: no such file or directory, open 'C:\Users\DELL\DummyJSONProducts.postman_environment.json'
+
+
+
+
+Microsoft Windows [Version 10.0.19045.5371]
+(c) Microsoft Corporation. All rights reserved.
+
+F:\API_Testing_project>newman run DummyJSONproducts.postman_collection.json -e DummyJSONProducts.postman_environment.json -r cli,htmlextra
+newman
+
+DummyJSONproducts
+
+→ GET product list
+  GET https://dummyjson.com/products/194 [200 OK, 2.84kB, 942ms]
+  √  Status code is 200
+
+→ GET product list Copy
+  GET https://dummyjson.com/products/1 [200 OK, 2.68kB, 252ms]
+
+→ ADD a new product
+  POST https://dummyjson.com/products/add [201 Created, 1.16kB, 249ms]
+
+→ GET ADD a new product
+  GET https://dummyjson.com/products/add [404 Not Found, 1.17kB, 246ms]
+
+→ update a products
+  PUT https://dummyjson.com/products/1 [200 OK, 1.68kB, 244ms]
+
+→ update a single  products
+  PATCH https://dummyjson.com/products/1 [200 OK, 1.68kB, 243ms]
+
+→ Delete products 1
+  DELETE https://dummyjson.com/products/1 [200 OK, 2.72kB, 260ms]
+
+┌─────────────────────────┬─────────────────────┬────────────────────┐
+│                         │            executed │             failed │
+├─────────────────────────┼─────────────────────┼────────────────────┤
+│              iterations │                   1 │                  0 │
+├─────────────────────────┼─────────────────────┼────────────────────┤
+│                requests │                   7 │                  0 │
+├─────────────────────────┼─────────────────────┼────────────────────┤
+│            test-scripts │                   1 │                  0 │
+├─────────────────────────┼─────────────────────┼────────────────────┤
+│      prerequest-scripts │                   0 │                  0 │
+├─────────────────────────┼─────────────────────┼────────────────────┤
+│              assertions │                   1 │                  0 │
+├─────────────────────────┴─────────────────────┴────────────────────┤
+│ total run duration: 3s                                             │
+├────────────────────────────────────────────────────────────────────┤
+│ total data received: 5.95kB (approx)                               │
+├────────────────────────────────────────────────────────────────────┤
+│ average response time: 348ms [min: 243ms, max: 942ms, s.d.: 242ms] │
+└────────────────────────────────────────────────────────────────────┘
+
+F:\API_Testing_project>
+
+
+
+
+C:\Users\DELL>
