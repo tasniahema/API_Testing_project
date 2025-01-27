@@ -10,21 +10,54 @@
 			"name": "GET product list",
 			"event": [
 				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
+							"var ResponseData = pm.response.json()\r",
+							"\r",
+							"pm.test(\"HTTP Status code VAlidation is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
-							"});"
+							"})\r",
+							"\r",
+							"pm.test(\"Title name Validation\", function () {\r",
+							"    pm.expect(ResponseData.title).to.assert(\"Women's Wrist Watch\");\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Categories name Validation\", function () {\r",
+							"    pm.expect(ResponseData.category).to.assert(\"womens-watches\");\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Rating value  Validation\", function () {\r",
+							"    pm.expect(ResponseData.rating).to.eql(2.93);\r",
+							"})\r",
+							""
 						],
-						"type": "text/javascript",
-						"packages": {}
+						"type": "text/javascript"
 					}
 				}
 			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "file",
+					"file": {
+						"src": ""
+					}
+				},
 				"url": {
 					"raw": "{{BaseUrl}}/products/194",
 					"host": [
@@ -40,9 +73,37 @@
 		},
 		{
 			"name": "GET product list Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var ResponseData = pm.response.json()\r",
+							"pm.test(\"HTTP Status code VAlidation is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    \r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "https://dummyjson.com/products/1",
 					"protocol": "https",
@@ -60,6 +121,23 @@
 		},
 		{
 			"name": "ADD a new product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var ResponseData = pm.response.json()\r",
+							"\r",
+							"pm.test(\"HTTP Status code VAlidation is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"    \r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -89,6 +167,23 @@
 		},
 		{
 			"name": "GET ADD a new product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var ResponseData = pm.response.json()\r",
+							"\r",
+							"pm.test(\"Status code 404 not found\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"    \r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -97,7 +192,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"id\": 195,\r\n\"title\": \"BMW Pencil\"\r\n/* other product data */\r\n}",
+					"raw": "{\r\n\"id\": 195,\r\n\"title\": \"BMW Pencil\"\r\n/* other product data   */\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -121,12 +216,28 @@
 		},
 		{
 			"name": "update a products",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var ResponseData = pm.response.json()\r",
+							"\r",
+							"pm.test(\"HTTP Status code VAlidation is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"}); "
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"request": {
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"discountPercentage\": 20\r\n}",
+					"raw": "{\r\n\"discountPercentage\": 20\r\n\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -150,12 +261,28 @@
 		},
 		{
 			"name": "update a single  products",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var ResponseData = pm.response.json()\r",
+							"\r",
+							"pm.test(\"HTTP Status code VAlidation is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"}); "
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"request": {
 				"method": "PATCH",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"discountPercentage\": 50\r\n}",
+					"raw": "{\r\n\"discountPercentage\": 50\r\n\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -179,9 +306,34 @@
 		},
 		{
 			"name": "Delete products 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var ResponseData = pm.response.json()\r",
+							"\r",
+							"pm.test(\"HTTP Status code VAlidation is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"}); "
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"request": {
 				"method": "DELETE",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "https://dummyjson.com/products/1",
 					"protocol": "https",
